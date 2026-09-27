@@ -1,6 +1,7 @@
 {
   "name": "lab-app",
   "version": "1.0.0",
+  "type": "module",
   "description": "lab2 - library app (TypeScript)",
   "main": "src/app.ts",
   "scripts": {
