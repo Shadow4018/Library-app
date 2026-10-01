@@ -1,0 +1,26 @@
+@import 'bootstrap/scss/bootstrap';
+
+body {
+  background-color: #f5f5f5;
+}
+
+.app-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.app-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.app-modal-card {
+  width: 90%;
+  max-width: 480px;
+  background: #fff;
+}
