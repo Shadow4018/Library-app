@@ -15,16 +15,29 @@ export class Storage<T> {
       return [];
     }
     try {
+<<<<<<< HEAD
       return JSON.parse(raw) as T[];
+=======
+      const parsed: unknown = JSON.parse(raw);
+      return Array.isArray(parsed) ? (parsed as T[]) : [];
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
     } catch {
       return [];
     }
   }
 
+<<<<<<< HEAD
+=======
+  /** Видаляє лише дані під ключем цього сховища. */
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
   remove(): void {
     window.localStorage.removeItem(this.key);
   }
 
+<<<<<<< HEAD
+=======
+  /** Повністю очищає LocalStorage (усі ключі). */
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
   clear(): void {
     window.localStorage.clear();
   }

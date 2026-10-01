@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { User } from '../../models/User.js';
 import { Validation } from '../../utils/validators.js';
 import type { UserFormData } from '../../types/index.js';
@@ -33,6 +34,13 @@ function applyErrors(fields: Record<string, FieldRefs>, errors: Record<string, s
     field.input.classList.toggle('is-invalid', Boolean(error));
   });
 }
+=======
+import { User } from '../../models/User';
+import { Validation } from '../../utils/validators';
+import type { UserFormData } from '../../types/index';
+import { createButton } from './Button';
+import { applyErrors, createField, type FieldRefs } from './FormField';
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
 
 /** Рендерить форму "Додати користувача" у контейнер та підключає обробник сабміту. */
 export function renderUserForm(container: HTMLElement, onSubmit: (user: User) => void): void {
@@ -43,8 +51,15 @@ export function renderUserForm(container: HTMLElement, onSubmit: (user: User) =>
   heading.textContent = 'Додати Користувача';
 
   const form = document.createElement('form');
+<<<<<<< HEAD
 
   const nameField = createField('name', "Ім'я", 'text');
+=======
+  // вимикаємо нативну валідацію (type="email"), щоб показувати власні повідомлення
+  form.noValidate = true;
+
+  const nameField = createField('name', "Ім'я");
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
   const emailField = createField('email', 'Email', 'email');
 
   const submitBtn = createButton('Додати Користувача', 'success', 'submit');

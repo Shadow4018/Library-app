@@ -1,5 +1,5 @@
-import type { IBook } from './interfaces/IBook.js';
-import { generateId } from '../utils/idGenerator.js';
+import type { IBook } from './interfaces/IBook';
+import { generateId } from '../utils/idGenerator';
 
 /** Серіалізоване представлення книги (для збереження в LocalStorage). */
 export interface BookDTO {

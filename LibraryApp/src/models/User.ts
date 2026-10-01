@@ -1,5 +1,5 @@
-import type { IUser } from './interfaces/IUser.js';
-import { generateId } from '../utils/idGenerator.js';
+import type { IUser } from './interfaces/IUser';
+import { generateId } from '../utils/idGenerator';
 
 /** Серіалізоване представлення користувача (для збереження в LocalStorage). */
 export interface UserDTO {
@@ -24,7 +24,7 @@ export class User implements IUser {
     this.id = id;
     this.name = name;
     this.email = email;
-    this.borrowedBookIds = borrowedBookIds;
+    this.borrowedBookIds = [...borrowedBookIds];
   }
 
   getId(): string {

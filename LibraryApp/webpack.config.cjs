@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
   return {
     entry: './src/app.ts',
     output: {
-      filename: 'bundle.[contenthash].js',
+      filename: isProduction ? 'bundle.[contenthash].js' : 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
       clean: true,
     },
@@ -28,17 +28,28 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.scss$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+          use: [
+            // у dev-режимі style-loader дає миттєве оновлення стилів (HMR), у prod - окремий css-файл
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            'css-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                api: 'modern-compiler',
+                sassOptions: {
+                  // Bootstrap 5.3 ще використовує глобальні sass-функції - приглушуємо шум у консолі
+                  quietDeps: true,
+                  silenceDeprecations: ['import', 'global-builtin', 'color-functions'],
+                },
+              },
+            },
+          ],
         },
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: './index.html',
-      }),
-      new MiniCssExtractPlugin({
-        filename: 'styles.[contenthash].css',
-      }),
+      new HtmlWebpackPlugin({ template: './index.html' }),
+      ...(isProduction ? [new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' })] : []),
     ],
     devServer: {
       static: path.resolve(__dirname, 'dist'),

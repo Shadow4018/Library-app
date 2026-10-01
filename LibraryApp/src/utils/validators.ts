@@ -1,21 +1,25 @@
-import type { BookFormData, UserFormData, ValidationResult } from '../types/index.js';
+import type { BookFormData, UserFormData, ValidationResult } from '../types/index';
 
 /**
  * Простір імен з чистими функціями валідації.
  * Не залежить від DOM та не знає нічого про UI.
+ * namespace використано свідомо - цього вимагає завдання (організація коду всередині модуля).
  */
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Validation {
-  const YEAR_REGEXP = /^(1[0-9]{3}|20[0-9]{2}|2100)$/;
+  const YEAR_REGEXP = /^(1[0-9]{3}|20[0-9]{2})$/;
   const USER_ID_REGEXP = /^[0-9]+$/;
   const EMAIL_REGEXP = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const REQUIRED_MESSAGE = "Це поле є обов'язковим";
 
   export function isRequired(value: string): boolean {
     return value.trim().length > 0;
   }
 
-  /** Рік має складатись лише з цифр і потрапляти в діапазон 1000-2100. */
+  /** Рік: рівно 4 цифри (1000-2099) і не пізніше за поточний рік. */
   export function isValidYear(value: string): boolean {
-    return YEAR_REGEXP.test(value.trim());
+    const trimmed = value.trim();
+    return YEAR_REGEXP.test(trimmed) && Number(trimmed) <= new Date().getFullYear();
   }
 
   /** Id користувача має складатись лише з цифр. */
@@ -31,13 +35,13 @@ export namespace Validation {
     const errors: Record<string, string> = {};
 
     if (!isRequired(data.title)) {
-      errors.title = "Це поле є обов'язковим";
+      errors.title = REQUIRED_MESSAGE;
     }
     if (!isRequired(data.author)) {
-      errors.author = "Це поле є обов'язковим";
+      errors.author = REQUIRED_MESSAGE;
     }
     if (!isRequired(data.year)) {
-      errors.year = "Це поле є обов'язковим";
+      errors.year = REQUIRED_MESSAGE;
     } else if (!isValidYear(data.year)) {
       errors.year = 'Рік видання має містити лише цифри та бути коректним роком';
     }
@@ -49,10 +53,10 @@ export namespace Validation {
     const errors: Record<string, string> = {};
 
     if (!isRequired(data.name)) {
-      errors.name = "Це поле є обов'язковим";
+      errors.name = REQUIRED_MESSAGE;
     }
     if (!isRequired(data.email)) {
-      errors.email = "Це поле є обов'язковим";
+      errors.email = REQUIRED_MESSAGE;
     } else if (!isValidEmail(data.email)) {
       errors.email = 'Введіть коректну email-адресу';
     }
@@ -65,7 +69,7 @@ export namespace Validation {
     const errors: Record<string, string> = {};
 
     if (!isRequired(value)) {
-      errors.userId = "Це поле є обов'язковим";
+      errors.userId = REQUIRED_MESSAGE;
     } else if (!isValidUserId(value)) {
       errors.userId = 'Id користувача має містити лише цифри';
     }

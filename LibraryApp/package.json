@@ -1,17 +1,17 @@
 {
   "name": "lab-app",
   "version": "1.0.0",
-  "type": "module",
   "description": "lab2 - library app (TypeScript)",
   "main": "src/app.ts",
   "scripts": {
-    "start": "webpack serve --mode development --open",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "test": "mocha",
-    "lint": "eslint \"src/**/*.ts\"",
-    "lint:fix": "eslint \"src/**/*.ts\" --fix",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "prepare": "husky install"
+    "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.{ts,scss}\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.{ts,scss}\" \"tests/**/*.ts\"",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",

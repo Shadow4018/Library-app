@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Book } from '../../models/Book.js';
 import { Validation } from '../../utils/validators.js';
 import type { BookFormData } from '../../types/index.js';
@@ -33,6 +34,13 @@ function applyErrors(fields: Record<string, FieldRefs>, errors: Record<string, s
     field.input.classList.toggle('is-invalid', Boolean(error));
   });
 }
+=======
+import { Book } from '../../models/Book';
+import { Validation } from '../../utils/validators';
+import type { BookFormData } from '../../types/index';
+import { createButton } from './Button';
+import { applyErrors, createField, type FieldRefs } from './FormField';
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
 
 /** Рендерить форму "Додати книгу" у контейнер та підключає обробник сабміту. */
 export function renderBookForm(container: HTMLElement, onSubmit: (book: Book) => void): void {
@@ -43,6 +51,11 @@ export function renderBookForm(container: HTMLElement, onSubmit: (book: Book) =>
   heading.textContent = 'Додати Книгу';
 
   const form = document.createElement('form');
+<<<<<<< HEAD
+=======
+  // вимикаємо нативну валідацію браузера, щоб показувати власні повідомлення
+  form.noValidate = true;
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
 
   const titleField = createField('title', 'Назва книги');
   const authorField = createField('author', 'Автор');

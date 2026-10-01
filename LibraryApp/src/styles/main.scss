@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import 'bootstrap/scss/bootstrap';
 
 body {
@@ -7,6 +8,24 @@ body {
 .app-wrapper {
   max-width: 700px;
   margin: 0 auto;
+=======
+@use 'bootstrap/scss/bootstrap';
+
+body {
+  background-color: #fff;
+}
+
+.app-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #efefef;
+}
+
+.app-wrapper .card {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  border: 0;
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
 }
 
 .app-modal-overlay {

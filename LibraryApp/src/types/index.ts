@@ -21,3 +21,14 @@ export type ModalType = 'info' | 'error' | 'success';
 export interface Identifiable {
   getId(): string;
 }
+<<<<<<< HEAD
+=======
+
+/** Сповіщення, яке NotificationService передає підписникам (UI показує його у модальному вікні). */
+export interface AppNotification {
+  title: string;
+  message: string;
+  type?: ModalType;
+  confirmLabel?: string;
+}
+>>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
