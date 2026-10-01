@@ -1,46 +1,8 @@
-<<<<<<< HEAD
-import { Book } from '../../models/Book.js';
-import { Validation } from '../../utils/validators.js';
-import type { BookFormData } from '../../types/index.js';
-import { createButton } from './Button.js';
-
-interface FieldRefs {
-  wrapper: HTMLDivElement;
-  input: HTMLInputElement;
-  errorEl: HTMLDivElement;
-}
-
-function createField(name: string, placeholder: string): FieldRefs {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'mb-2';
-
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.name = name;
-  input.className = 'form-control';
-  input.placeholder = placeholder;
-
-  const errorEl = document.createElement('div');
-  errorEl.className = 'text-danger small mt-1';
-
-  wrapper.append(input, errorEl);
-  return { wrapper, input, errorEl };
-}
-
-function applyErrors(fields: Record<string, FieldRefs>, errors: Record<string, string>): void {
-  Object.entries(fields).forEach(([key, field]) => {
-    const error = errors[key];
-    field.errorEl.textContent = error ?? '';
-    field.input.classList.toggle('is-invalid', Boolean(error));
-  });
-}
-=======
 import { Book } from '../../models/Book';
 import { Validation } from '../../utils/validators';
 import type { BookFormData } from '../../types/index';
 import { createButton } from './Button';
 import { applyErrors, createField, type FieldRefs } from './FormField';
->>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
 
 /** Рендерить форму "Додати книгу" у контейнер та підключає обробник сабміту. */
 export function renderBookForm(container: HTMLElement, onSubmit: (book: Book) => void): void {
@@ -51,11 +13,8 @@ export function renderBookForm(container: HTMLElement, onSubmit: (book: Book) =>
   heading.textContent = 'Додати Книгу';
 
   const form = document.createElement('form');
-<<<<<<< HEAD
-=======
   // вимикаємо нативну валідацію браузера, щоб показувати власні повідомлення
   form.noValidate = true;
->>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
 
   const titleField = createField('title', 'Назва книги');
   const authorField = createField('author', 'Автор');

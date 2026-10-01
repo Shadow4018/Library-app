@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import type { Identifiable } from '../types/index.js';
-=======
 import type { Identifiable } from '../types/index';
->>>>>>> d08e7be7 (fix: typical error fixes + finished configurations)
 
 /**
  * Узагальнена (generic) колекція об'єктів типу T.
