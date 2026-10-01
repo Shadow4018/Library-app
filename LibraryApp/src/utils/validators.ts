@@ -1,4 +1,4 @@
-import { BookFormData, UserFormData, ValidationResult } from '../types';
+import type { BookFormData, UserFormData, ValidationResult } from '../types/index.js';
 
 /**
  * Простір імен з чистими функціями валідації.
