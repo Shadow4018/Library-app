@@ -4,8 +4,10 @@
   "description": "lab2 - library app (TypeScript)",
   "main": "src/app.ts",
   "scripts": {
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist",
     "test": "mocha",
     "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" --fix",
@@ -23,23 +25,15 @@
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "chai": "^4.4.1",
-    "css-loader": "^7.1.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "html-webpack-plugin": "^5.6.0",
     "husky": "^9.0.11",
-    "mini-css-extract-plugin": "^2.10.2",
     "mocha": "^10.5.2",
     "prettier": "^3.3.2",
     "sass": "^1.77.6",
-    "sass-loader": "^14.2.1",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2",
-    "webpack": "^5.92.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "vite": "^8.3.2"
   },
   "dependencies": {
     "bootstrap": "^5.3.3"
